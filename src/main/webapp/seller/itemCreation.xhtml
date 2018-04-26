@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <h:head>
+        <title>créer un article</title>
+    </h:head>
+    <h:body>
+        <!-- accès direct : http://localhost:8080/goodcesi/faces/seller/itemCreation.xhtml -->
+        
+        <ui:composition template="sellerTemplate.xhtml">
+        <!--redéfinition de la zone de contenu - référence content -->
+        <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="titre"/>
+                        <h:inputText id="itemNameIn" required="true" value="#{itemModel.item.name}"/>
+
+                        <h:outputLabel value="description"/>
+                        <h:inputTextarea id="itemDescAr" required="true" value="#{itemModel.item.description}"/>
+
+                        <h:outputLabel value="Prix"/>
+                        <h:inputText id="itemPriceIn" required="true" value="#{itemModel.item.price}"/>
+
+                        <h:outputLabel value="Poid"/>
+                        <h:inputText id="itemWeightIn" required="true" value="#{itemModel.item.weight}"/>
+
+                        <h:outputLabel value="frais de port"/>
+                        <h:inputText id="itemChargeIn" required="true" value="#{itemModel.item.shippingCharge}"/>
+
+                        &nbsp;
+                        <h:commandButton value="valider" action="categoriesSelection"/>
+                    </h:panelGrid>                      
+                </h:form>                
+       
+       </ui:define>
+        </ui:composition>   
+    </h:body>
+</html> 
+

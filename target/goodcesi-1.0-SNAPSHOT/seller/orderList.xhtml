@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+                <!-- style applicable au contenu-->
+                <h:outputStylesheet library="css" name="sellerStyle.css"/>
+                <h:form>
+                <h:dataTable value="#{orderListModel.orders}" var="order"
+                    styleClass="orderTable" headerClass="orderHeader" 
+                    columnClasses="oddColumn,evenColumn,oddColumn,evenColumn,oddColumn,evenColumn,oddColumn"
+                >
+                    <h:column>
+                        <f:facet name="header">ID Commande</f:facet>
+                        #{order.orderedItem.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">date de commande</f:facet>
+                        <h:outputText value="#{order.orderDate}">
+                            <f:convertDateTime pattern="dd/MM/YYYY"/>
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Article</f:facet>
+                        #{order.orderedItem.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Acheteur</f:facet>
+                        #{order.buyer.lastname} #{orderbuyerr.firstname}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">adresse</f:facet>
+                        #{orderbuyerr.address}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Prix total</f:facet>
+                        #{order.totalPrice}€
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">Statut</f:facet>
+                      #{order.status}                      
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">A envoyer</f:facet>
+                        
+                            <h:selectBooleanCheckbox id="markSent" rendered="#{order.status!='SENT'}" 
+                                                     onchange="submit()" valueChangeListener="#{orderListModel.markOrderAsSent}">
+                                <f:attribute name="orderId" value="#{order.orderedItem.id}"/>
+                            </h:selectBooleanCheckbox>      
+                    </h:column>
+                </h:dataTable>
+             </h:form>   
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

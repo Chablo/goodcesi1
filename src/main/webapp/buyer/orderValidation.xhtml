@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../mainTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Chèr(e)"/>
+                    <h:outputLabel value="#{orderModel.currentUser.user.firstname} #{orderModel.currentUser.user.lastname}"/>
+                    
+                    <h:outputLabel value="Vous allez passer commande à"/>
+                    <h:outputLabel value="#{orderModel.orderedItem.seller.firstname} #{orderModel.orderedItem.seller.lastname}"/>
+                    
+                    <!-- cf. http://www.jsftoolbox.com/documentation/help/12-TagReference/core/f_convertDateTime.html-->
+                    <h:outputLabel value="Date de la commande"/>
+                    <h:outputLabel value="#{orderModel.order.orderDate}">
+                        <f:convertDateTime type="both" dateStyle="full" timeStyle="full" locale="Fr_fr" timeZone="Europe/Paris"/>
+                    </h:outputLabel>
+                    
+                    <h:outputLabel value="Statut de la commande"/>
+                    <h:outputLabel value="#{orderModel.order.status}"/>
+                    
+                    <h:outputLabel value="prix de l'article"/>
+                    <h:outputLabel value="#{orderModel.orderedItem.price} €"/>
+                    
+                    <h:outputLabel value="frais de port"/>
+                    <h:outputLabel value="#{orderModel.orderedItem.shippingCharge} €"/>
+                    
+                    <h:outputLabel value="poid de l'article"/>
+                    <h:outputLabel value="#{orderModel.orderedItem.weight} gr"/>
+                    
+                    <h:outputLabel value="cout total de la commande"/>
+                    <h:outputLabel value="#{orderModel.order.totalPrice} €"/>
+                    
+       
+                     <h:outputLabel value="adresse du vendeur"/>
+                     <h:outputLabel value="#{orderModel.orderedItem.seller.address}"/>
+                     
+                     <h:outputLabel value="adresse de livraison"/>
+                     <h:outputLabel value="#{orderModel.currentUser.user.address}"/>
+                    
+                       <h:outputLabel value="N° CB (10 chiffres)"/>
+                        <h:form>
+                         <h:inputSecret value="#{orderModel.ccNumber}"/>
+                         <h:commandButton value="payer" action="#{orderModel.pay}"/>
+                       </h:form>
+                </h:panelGrid>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+            <!-- les crochés permettent de spécifier la clé d'une Map. cette expression retourne donc la valeur
+            associée à la clé entre crochets (ici une Liste d'articles)
+            -->
+            <ui:define name="content">
+                <h3>Liste des articles en vente</h3>
+                <h:form>
+                <h:dataTable id="forsale" value="#{itemListModel.items['FOR_SALE']}" var="i">
+                    <h:column>
+                        <f:facet name="header">nom Article</f:facet>
+                        <h:outputText value="#{i.name}" rendered="#{not itemListModel.updatable}"/>
+                        <h:inputText value="#{i.name}" rendered="#{itemListModel.updatable}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">prix article</f:facet>
+                        <h:outputText value="#{i.price}" rendered="#{not itemListModel.updatable}"/>
+                        <h:inputText value="#{i.price}" rendered="#{itemListModel.updatable}"/> 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">frais de port</f:facet>
+                        <h:outputText value="#{i.shippingCharge}" rendered="#{not itemListModel.updatable}"/>
+                        <h:inputText value="#{i.shippingCharge}" rendered="#{itemListModel.updatable}"/> 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">description</f:facet>
+                        <h:outputText value="#{i.description}" rendered="#{not itemListModel.updatable}"/>
+                        <h:inputText value="#{i.description}" rendered="#{itemListModel.updatable}"/> 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">poids</f:facet>
+                        <h:outputText value="#{i.weight}" rendered="#{not itemListModel.updatable}"/>
+                        <h:inputText value="#{i.weight}" rendered="#{itemListModel.updatable}" /> 
+                    </h:column>
+                </h:dataTable>
+                    <h:panelGrid columns="2">
+                    <h:commandLink value ="Editer" actionListener="#{itemListModel.changeEditableMode}" rendered="#{not itemListModel.updatable}"/> <h:commandLink value ="Lecture" actionListener="#{itemListModel.changeEditableMode}" rendered="#{itemListModel.updatable}"/>
+                    <h:commandButton value="valider" actionListener="#{itemListModel.validateUpdates}" rendered="#{itemListModel.updatable}"/>
+                    </h:panelGrid>
+                </h:form>
+                <br/>
+                <h3>Liste des articles vendus</h3>
+                <h:dataTable value="#{itemListModel.items['BUYED']}" var="i">
+                    <h:column>
+                        <f:facet name="header">nom Article</f:facet>
+                        <h:outputText value="#{i.name}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">total vente</f:facet>
+                        <h:outputText value="#{i.price + i.shippingCharge}" />
+                    </h:column>
+                </h:dataTable>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

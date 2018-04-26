@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Bienvenue sur le site GoodCesi</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="mainTemplate.xhtml">
+        <ui:define name="content">
+            <h1> Bienvenu sur le site Good Cesi (le bon coin du CESI)!</h1>
+            <h2>Ce site n'est qu'un prototype simplifié à portée pédagogique.</h2>
+            <p>
+            Ce n'est en aucun cas une application finalisée que ce soit au niveau technique, fonctionnel ou graphique.
+            Par exemple, la validation des champs n'est pas mise en place, la gestion des erreurs est plus que minime, etc.
+            A noter aussi que le domaine de la vente en ligne de particulier à particulier a été fortement simplifié.
+            </p>
+            <p>
+            Good Cesi a pour seul objectif de vous faire travailler les concepts de composants managés CDI et session beans EJB.
+            Les choix de conception ont donc été essentiellement fait dans cette optique.
+            </p>
+            <i>Vous avez quand même le droit de vous extasier devant son superbe design avant-gardiste ;-))</i>
+            <p>
+               <h3>comptes utilisateurs insérés en base</h3>
+               <table cellspacing="10" cellpadding="5">
+                   <tr align="left">
+                    <th>login</th>
+                    <th>mdp</th>
+                    <th>groupe(s)</th>
+                  </tr>
+                  <tr>
+                    <td>jdoe</td>
+                    <td>jdoe123</td>
+                    <td>acheteurs, vendeurs</td>
+                  </tr>
+                  <tr>
+                    <td>ven1</td>
+                    <td>ven1</td>
+                    <td>vendeurs</td>
+                  </tr>
+                  <tr>
+                    <td>ach1</td>
+                    <td>ach1</td>
+                    <td>acheteurs</td>
+                  </tr>
+                  <tr>
+                    <td>admin1</td>
+                    <td>admin1</td>
+                    <td>administrateurs</td>
+                  </tr>
+               </table>             
+            </p>
+        </ui:define>
+        </ui:composition>   
+    </h:body>
+</html>
+

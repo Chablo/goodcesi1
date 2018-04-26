@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./mainTemplate.xhtml">
+
+            <ui:define name="content">
+                <!-- l'état de viewParam est sauvé/conservé -->
+                <f:metadata>
+                    <f:viewParam id="viewParam" name="id" value="#{catalogModel.currentItemId}"/>
+                    <!-- méthode d'action invoquée durant la phase Invoke Application
+                    onPostBack="true" pour que cette méthode soit invoquer lorsqu'on clique sur le bouton commander pour 
+                    recharger l'article courant afin qu'il puisse être passé en paramètre de beginOrdering.
+                    -->
+                    <f:viewAction action="#{catalogModel.loadCurrentItem}" onPostback="true"/>
+                </f:metadata>
+                <!-- les 2 expressions ci-dessous sont évaluées durant la phase render response-->
+                article sélectionné #{catalogModel.currentItemId} #{catalogModel.currentItem.name}
+                <h:panelGrid id="pGridDetail" columns="2">
+                    description :    <h:outputText value="#{catalogModel.currentItem.description}" />
+                    prix :    <h:outputText value="#{catalogModel.currentItem.price} €" />
+                    <!--NetBeans n'arrive pas à repérer une propriété au delà de 3 niveaux de chainage-->
+                    vendeur :    <h:outputText value="#{catalogModel.currentItem.seller.firstname}" />
+                    <h:form>
+                        <h:commandButton value="commander" action="#{orderModel.beginOrdering(catalogModel.currentItem)}"/>
+                    </h:form>
+                </h:panelGrid> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="sellerTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content"> 
+        <h:form>
+            article "#{itemModel.item.name} prix : #{itemModel.item.price} € 
+        <h:dataTable value="#{categoriesCache.categories}" var="cat">
+            <h:column>
+                <h:outputText value="#{cat.title}"/>
+            </h:column>
+            <h:column>
+                <h:selectBooleanCheckbox  onchange="submit()" valueChangeListener="#{itemModel.linkToCategory}" rendered="#{!itemModel.categoriesId.contains(cat.id)}">
+                    <f:attribute value="#{cat.id}" name="catId"/>
+                </h:selectBooleanCheckbox>
+            </h:column>
+        </h:dataTable>
+            <h:commandButton value ="enregistrer" action="#{itemModel.createNewItem}" />   
+        </h:form>    
+    </ui:define>
+
+</ui:composition>
