@@ -9,8 +9,9 @@ import com.goodcesi.business.domain.*;
 import com.goodcesi.business.ordermgmt.OrderManagerLocal;
 import com.goodcesi.qualifier.Authenticated;
 import com.goodcesi.qualifier.ScopeMonitor;
-import java.io.Serializable;
 import java.util.Date;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateful;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
@@ -42,7 +43,9 @@ import javax.inject.Named;
 @Named("orderModel")
 @ScopeMonitor
 @ConversationScoped
-public class OrderBean implements Serializable {//un SFSB n'a pas besoin d'implémenter Serializable pour activer la capacité de passivation
+@Stateful
+@LocalBean
+public class OrderBean {//un SFSB n'a pas besoin d'implémenter Serializable pour activer la capacité de passivation
     
     private Item orderedItem;  
     private String ccNumber; 
