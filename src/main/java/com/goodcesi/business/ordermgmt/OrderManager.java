@@ -15,11 +15,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.goodcesi.integration.dao.CrudServiceLocal;
-import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.enterprise.context.Dependent;
-import javax.transaction.Transactional;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 
 /**
  *
@@ -28,14 +25,13 @@ import javax.transaction.Transactional;
  * Composant chargé d'implémenter la gestion d'une commande
  * 
  */
-@Dependent
-@Transactional
-public class OrderManager implements OrderManagerLocal, Serializable {
+@Stateless
+public class OrderManager implements OrderManagerLocal {
 
     @PersistenceContext
     private EntityManager em;
       
-    @Inject
+    @EJB
     private CrudServiceLocal dao;
     
     //création d'une commande entrainant la mise à jour de la base de données.

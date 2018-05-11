@@ -7,7 +7,7 @@ package com.goodcesi.business.catalogmgmt;
 
 import com.goodcesi.business.domain.*;
 import java.util.List;
-import javax.enterprise.context.Dependent;
+import javax.ejb.Stateless;
 import javax.persistence.*;
 
 /**
@@ -15,7 +15,7 @@ import javax.persistence.*;
  * @author asbriglio
  * Chargé de retrouver une liste d'articles en fonction de critères.
  */
-@Dependent
+@Stateless
 public class ItemsSeeker implements ItemsSeekerLocal {
     
     @PersistenceContext

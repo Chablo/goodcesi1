@@ -10,9 +10,7 @@ import java.util.*;
 import java.util.Set;
 import javax.inject.Inject;
 import com.goodcesi.integration.dao.CrudServiceLocal;
-import java.io.Serializable;
-import javax.enterprise.context.Dependent;
-import javax.transaction.Transactional;
+import javax.ejb.Stateless;
 
 /**
  *
@@ -22,9 +20,8 @@ import javax.transaction.Transactional;
  * @Transactional permet d'associer un intercepteur CDI (définie par la spécification des transactions JTA) à un bean 
  * pour que chaque méthode du bean s'exécute dans le contexte d'une transaction.
  */
-@Dependent
-@Transactional
-public class CatalogManager implements CatalogManagerLocal, Serializable {
+@Stateless
+public class CatalogManager implements CatalogManagerLocal {
 
     @Inject
     private CrudServiceLocal dao;

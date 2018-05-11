@@ -13,18 +13,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import com.goodcesi.integration.dao.CrudServiceLocal;
-import java.io.Serializable;
-import javax.enterprise.context.Dependent;
-import javax.transaction.Transactional;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author Asbriglio
  * En charge de la gestion des comptes utilisateur
  */
-@Dependent
-@Transactional
-public class UserManager implements UserManagerLocal, Serializable {
+@Stateless
+public class UserManager implements UserManagerLocal {
 
     @Inject
     private CrudServiceLocal dao;

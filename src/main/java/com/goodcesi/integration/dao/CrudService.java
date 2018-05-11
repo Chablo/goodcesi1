@@ -7,8 +7,8 @@
 package com.goodcesi.integration.dao;
 
 
-import java.io.Serializable;
 import java.util.List;
+import javax.ejb.Stateless;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +16,6 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.TransactionScoped;
 
 /**
  *
@@ -27,8 +26,8 @@ import javax.transaction.TransactionScoped;
  * transaction, il y a une instance du bean associée.
  */
 
-@TransactionScoped //scope CDI étendue par la spécification Java des transactions (JTA)
-public class CrudService implements CrudServiceLocal, Serializable {
+@Stateless
+public class CrudService implements CrudServiceLocal {
     
     @PersistenceContext(unitName = "goodcesiPU")//unitName facultatif
     private EntityManager em;
