@@ -28,7 +28,6 @@
 /home/charles/Programming/Workspace/JavaEE/NetBeansProjects/goodcesi1/goodcesi/src/main/java/com/goodcesi/model/ItemBean.java
 /home/charles/Programming/Workspace/JavaEE/NetBeansProjects/goodcesi1/goodcesi/src/main/java/com/goodcesi/business/domain/Item.java
 /home/charles/Programming/Workspace/JavaEE/NetBeansProjects/goodcesi1/goodcesi/src/main/java/com/goodcesi/model/GroupsBean.java
-/home/charles/Programming/Workspace/JavaEE/NetBeansProjects/goodcesi1/goodcesi/src/main/java/com/goodcesi/model/AccountBeanImpl.java
 /home/charles/Programming/Workspace/JavaEE/NetBeansProjects/goodcesi1/goodcesi/src/main/java/com/goodcesi/business/ordermgmt/CallerContext.java
 /home/charles/Programming/Workspace/JavaEE/NetBeansProjects/goodcesi1/goodcesi/src/main/java/com/goodcesi/model/factory/CurrentUserFactory.java
 /home/charles/Programming/Workspace/JavaEE/NetBeansProjects/goodcesi1/goodcesi/src/main/java/com/goodcesi/monitor/BeanScopeTracker.java
