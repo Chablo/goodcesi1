@@ -10,6 +10,7 @@ import com.goodcesi.business.domain.Category;
 import com.goodcesi.qualifier.ScopeMonitor;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -25,6 +26,7 @@ import javax.inject.Named;
 @Named
 @ScopeMonitor
 @ApplicationScoped
+@Singleton
 public class CategoriesCache {
     
     private  List<Category> categories;
