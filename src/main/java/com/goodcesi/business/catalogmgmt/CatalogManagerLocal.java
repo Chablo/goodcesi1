@@ -9,12 +9,14 @@ import com.goodcesi.business.domain.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import javax.ejb.Local;
 
 /**
  *
  * @author asbriglio
  */
 
+@Local
 public interface CatalogManagerLocal {
 
     public Category saveNewCategory(String title);

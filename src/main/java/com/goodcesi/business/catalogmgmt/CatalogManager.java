@@ -21,6 +21,7 @@ import javax.ejb.Stateless;
  * pour que chaque méthode du bean s'exécute dans le contexte d'une transaction.
  */
 @Stateless
+@javax.interceptor.Interceptors(com.goodcesi.monitor.BeanScopeTracker.class)
 public class CatalogManager implements CatalogManagerLocal {
 
     @Inject
