@@ -8,6 +8,7 @@ package com.goodcesi.model;
 import com.goodcesi.business.domain.User;
 
 import com.goodcesi.business.usermgmt.UserManagerLocal;
+import com.goodcesi.qualifier.ScopeMonitor;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,6 +27,7 @@ import javax.servlet.http.HttpSession;
  * bean chargé de la création d'un compte utilisateur
  */
 @ApplicationScoped
+@ScopeMonitor
 @Named("accountModel")
 public class AccountBean implements AccountModel{
  

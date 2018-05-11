@@ -8,9 +8,11 @@ package com.goodcesi.model;
 import com.goodcesi.business.catalogmgmt.CatalogManager;
 import com.goodcesi.business.catalogmgmt.CatalogManagerLocal;
 import com.goodcesi.business.domain.*;
+import com.goodcesi.qualifier.ScopeMonitor;
 import java.util.*;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -18,11 +20,13 @@ import javax.inject.Named;
  * @author Asbriglio
  * bean chargé du parcours dans le catalogue
  */
-@Named("catalogModel")
 @RequestScoped
+@ScopeMonitor
+@Named("catalogModel")
 public class CatalogBean{
     
-    private CatalogManagerLocal catalogManager = new CatalogManager();
+    @Inject
+    private CatalogManagerLocal catalogManager;
     
     private List<Item> itemsFromCategory;
     

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -19,6 +20,7 @@ import javax.inject.Named;
  * @author Asbriglio
  * bean chargeant la liste des groupes qu'un utilisateur peut sélectionner lors de son inscription.
  */
+@RequestScoped
 @Named("groupsModel")
 public class GroupsBean {
     

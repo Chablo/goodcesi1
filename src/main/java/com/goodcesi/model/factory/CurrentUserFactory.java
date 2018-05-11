@@ -8,10 +8,14 @@ package com.goodcesi.model.factory;
 import com.goodcesi.business.domain.User;
 import com.goodcesi.business.usermgmt.UserManagerLocal;
 import com.goodcesi.model.CurrentUser;
+import com.goodcesi.qualifier.Authenticated;
 import java.io.Serializable;
 import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Produces;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 
 /**
@@ -34,7 +38,10 @@ public class CurrentUserFactory implements Serializable{
     !!! La méthode productrice ne doit pas être invoquée avant que l'authentification JAAS ait eu lieu SINON échec
     l'authentification a lieu lorsque l'on accède à une page protégé.
     */
-  
+    @Produces
+    @SessionScoped
+    @Authenticated
+    @Named("authenticatedUser")
     CurrentUser createCurrentUser(){
         System.out.println("-----------------------------méthode @Produces déclénchée");
         String userLogin = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();

@@ -8,6 +8,8 @@ package com.goodcesi.model;
 
 import com.goodcesi.business.catalogmgmt.CatalogManagerLocal;
 import com.goodcesi.business.domain.Category;
+import com.goodcesi.qualifier.ScopeMonitor;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
@@ -18,6 +20,8 @@ import javax.inject.Named;
  * @author asbriglio
  * bean intervenant dans la création d'une catégorie
  */
+@RequestScoped
+@ScopeMonitor
 @Named("categoryModel")
 public class CategoryBean {
     

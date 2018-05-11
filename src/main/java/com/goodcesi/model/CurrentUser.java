@@ -22,7 +22,6 @@ import javax.servlet.http.HttpSession;
  * cette classe n'est pas considérée comme une classe/source de bean managé CDI
  * 
  */
-@Dependent
 public class CurrentUser implements Serializable { //implémentation de Serializable pour gérer le cas de la passivation
     
     private User user; //utilisateur authentifié empaqueté ("wrapped") dans le composant

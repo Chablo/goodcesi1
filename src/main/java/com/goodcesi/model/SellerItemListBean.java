@@ -12,6 +12,7 @@ package com.goodcesi.model;
 
 import com.goodcesi.business.catalogmgmt.CatalogManagerLocal;
 import com.goodcesi.business.domain.Item;
+import com.goodcesi.qualifier.Authenticated;
 import java.io.Serializable;
 import java.util.*;
 import javax.annotation.PostConstruct;
@@ -44,7 +45,7 @@ public class SellerItemListBean implements Serializable{
      */
     //injection via constructeur
     @Inject
-    public SellerItemListBean(CatalogManagerLocal catalogManager, CurrentUser user) {//les arguments sont des points d'injection
+    public SellerItemListBean(CatalogManagerLocal catalogManager, @Authenticated CurrentUser user) {//les arguments sont des points d'injection
        this.catalogManager=catalogManager;
        this.currentUser = user;
     }

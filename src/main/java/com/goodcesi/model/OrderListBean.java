@@ -8,6 +8,7 @@ package com.goodcesi.model;
 import com.goodcesi.business.domain.Order;
 import com.goodcesi.business.ordermgmt.CallerContext;
 import com.goodcesi.business.ordermgmt.OrderManagerLocal;
+import com.goodcesi.qualifier.Authenticated;
 import java.util.*;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -27,9 +28,11 @@ import javax.inject.*;
  * autrement-dit le bean donne accès à la liste des commandes en tant que vendeur ou acheteur.
  * 
  */
+@RequestScoped
 @Named("orderListModel")
 public class OrderListBean {
     
+    @Authenticated
     @Inject
     private CurrentUser authenticatedUser;
     

@@ -7,6 +7,7 @@ package com.goodcesi.model;
 
 import com.goodcesi.business.domain.*;
 import com.goodcesi.business.ordermgmt.OrderManagerLocal;
+import com.goodcesi.qualifier.Authenticated;
 import java.io.Serializable;
 import java.util.Date;
 import javax.enterprise.context.SessionScoped;
@@ -44,7 +45,7 @@ public class OrderBean implements Serializable {//un SFSB n'a pas besoin d'impl√
     private String ccNumber; 
     private Order order;
     
-    
+    @Authenticated
     @Inject 
     private CurrentUser currentUser;
     
