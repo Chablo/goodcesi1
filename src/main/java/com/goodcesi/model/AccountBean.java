@@ -9,11 +9,13 @@ import com.goodcesi.business.domain.User;
 
 import com.goodcesi.business.usermgmt.UserManagerLocal;
 import com.goodcesi.qualifier.ScopeMonitor;
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -26,10 +28,10 @@ import javax.servlet.http.HttpSession;
  * @author Asbriglio
  * bean chargé de la création d'un compte utilisateur
  */
-@ApplicationScoped
 @ScopeMonitor
+@SessionScoped
 @Named("accountModel")
-public class AccountBean implements AccountModel{
+public class AccountBean implements AccountModel, Serializable{
  
     @Inject
     private UserManagerLocal userManager;
